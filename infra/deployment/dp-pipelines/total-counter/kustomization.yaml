@@ -1,5 +1,4 @@
 resources:
 - pipeline-shift-history-totals-load.yaml
-- pipeline-shift-history-totals-load-manual.yaml
 - pipeline-current-shift-counts.yaml
 - pipeline-total-counter.yaml
