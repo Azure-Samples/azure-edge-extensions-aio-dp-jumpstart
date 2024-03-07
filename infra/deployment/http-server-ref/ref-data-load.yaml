@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ref-data-server
+  labels:
+    app: ref-data-server
+spec:
+  containers:
+  - name: ref-data-server
+    image: k3d-devregistry.localhost:5500/ref-http-server:latest
+    ports:
+    - containerPort: 8001
+    env:
+    - name: CONTENT_TYPE
+      value: application/json

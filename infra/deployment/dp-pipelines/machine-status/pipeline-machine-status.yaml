@@ -1,0 +1,142 @@
+apiVersion: dataprocessor.iotoperations.azure.com/v1
+kind: Pipeline
+metadata:
+  name: pipeline-machine-status
+  namespace: azure-iot-operations
+spec:
+  enabled: true
+  input:
+    authentication:
+      type: serviceAccountToken
+    broker: tls://aio-mq-dmqtt-frontend:8883
+    cleanSession: false
+    displayName: mq-input-zurich
+    format:
+      type: json
+    next:
+    - transform-nodeid-status
+    partitionCount: 1
+    partitionStrategy:
+      expression: .payload.payload | keys[0] as $k | if $k | test("Status|Counter") then 
+                                                        ($k | split(".")[1])
+                                                     else .topic end
+      type: key
+    qos: 1
+    topics:
+    - zurich/input/valid
+    type: input/mqtt@v1
+  stages:
+    transform-nodeid-status:
+      description: Transforms node object to nodeid and status keeping lkv values
+      displayName: transform-nodeid-status
+      expression: '.payload = 
+        (.payload.payload 
+        | to_entries 
+        | map(
+            if .key | test("Status") then
+              {"key": "NodeId", "value": .key},
+              {"key": (.key | split(".")[-1]), "value": .value.Value}
+            else
+              .
+            end
+          ) 
+        | from_entries)'
+      next:
+      - filter-leave-status-tag
+      type: processor/transform@v1
+    filter-leave-status-tag:
+      displayName: filter-leave-status-tag
+      expression: (.payload.NodeId != null) and (.payload.NodeId | test("Status"))
+      next:
+      - lkv
+      type: processor/filter@v1
+    lkv:
+      displayName: lkv-good-bad-counter
+      next:
+      - transform-lkv-to-final-status-values
+      properties:
+      - inputPath: .payload.Mode1
+        outputPath: .payload.lkvMode1
+      - inputPath: .payload.Mode2
+        outputPath: .payload.lkvMode2
+      - inputPath: .payload.Fault
+        outputPath: .payload.lkvFault
+      - inputPath: .payload.Idle
+        outputPath: .payload.lkvIdle
+      type: processor/lkv@v1
+    transform-lkv-to-final-status-values:
+      description: Gets final values needed to calculate machine status tag
+      displayName: transform-lkv-to-final-status-values
+      expression: '.payload = (.payload 
+          | {
+              "NodeId": .NodeId, 
+              "Mode1": (if has("Mode1") then .Mode1 elif has("lkvMode1") then .lkvMode1 else null end),  
+              "Fault": (if has("Fault") then .Fault elif has("lkvFault") then .lkvFault else null end),  
+              "Idle": (if has("Idle") then .Idle elif has("lkvIdle") then .lkvIdle else null end),
+              "Mode2": (if has("Mode2") then .Mode2 elif has("lkvMode2") then .lkvMode2 else null end)
+            }    
+          )'
+      next:
+      - calculate-machine-status
+      type: processor/transform@v1
+    calculate-machine-status:
+      description: Calculates machine status and returns it with nodeid
+      displayName: calculate-machine-status
+      expression: '.payload = (.payload 
+          | {
+              "NodeId": .NodeId,
+              "MACHINE_STATUS": (
+                if .Fault == true then "FAULT"
+                elif .Idle == true then "IDLE"
+                elif .Mode1 == true and .Mode2 == false then "MODE1"
+                elif .Mode1 == false and .Mode2 == true then "MODE2"
+                else "UNDEFINED"
+                end) 
+            }
+          )'
+      next:
+      - enrich-with-reference-dataset
+      type: processor/transform@v1
+    enrich-with-reference-dataset:
+      alwaysArray: false
+      conditions:
+      - inputPath: .payload.NodeId
+        key: nodeId
+        type: keyMatch
+      dataset: dataset-reference-data
+      description: Enriches data with reference-data dataset
+      displayName: enrich-with-reference-dataset
+      limit: 100
+      next:
+      - transform-enriched-data
+      outputPath: .enrich
+      type: processor/enrich@v1
+    transform-enriched-data:
+      description: Add enrichment data to payload with transformation
+      displayName: transform-enriched-data
+      expression: '.payload = (.payload as $payload 
+        | .enrich as $enriched 
+        | {
+            PlantId: $enriched.PlantId,
+            LineId: $enriched.LineId,
+            MachineId: $enriched.MachineId,
+            VariableId: "MACHINE_STATUS",
+            Value: $payload.MACHINE_STATUS
+          })'
+      next:
+      - output
+      type: processor/transform@v1
+    output:
+      authentication:
+        type: serviceAccountToken
+      broker: tls://aio-mq-dmqtt-frontend:8883
+      displayName: mq-output-zurich-machine-status
+      format:
+        path: .payload
+        type: json
+      qos: 1
+      topic:
+        type: static
+        value: metrics/aio/machine-status
+      type: output/mqtt@v1
+      userProperties: []

@@ -1,0 +1,30 @@
+apiVersion: dataprocessor.iotoperations.azure.com/v1
+kind: Pipeline
+metadata:
+  name: pipeline-http-reference-data-load
+  namespace: azure-iot-operations
+spec:
+  enabled: true
+  input:
+    authentication:
+      type: none
+    displayName: Ref Data HTTP Server
+    format:
+      type: json
+    interval: 1m
+    method: GET
+    next:
+    - output
+    partitionCount: 1
+    partitionStrategy:
+      expression: "0"
+      type: id
+    request:
+      headers: []
+    type: input/http@v1
+    url: http://ref-data-service:8001
+  stages:
+    output:
+      dataset: dataset-reference-data
+      displayName: Reference datasets - 2ebaa3
+      type: output/refdata@v1
