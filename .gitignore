@@ -404,7 +404,6 @@ megalinter-reports/
 **/.workspace
 infra/provisioning/aio-test-ca.crt
 infra/provisioning/aio-test-private.key
-infra/deployment/custom-workload/4_workload.yaml
 ~/.azure/servicePrincipal.json
 ~/.azure/grafana.json
 
