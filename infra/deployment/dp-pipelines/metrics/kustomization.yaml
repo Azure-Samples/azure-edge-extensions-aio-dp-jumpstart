@@ -1,0 +1,2 @@
+resources:
+  - pipeline-metrics-to-grafana.yaml

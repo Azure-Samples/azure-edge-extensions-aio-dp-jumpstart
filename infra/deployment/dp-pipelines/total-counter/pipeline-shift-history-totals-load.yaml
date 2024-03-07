@@ -1,0 +1,108 @@
+apiVersion: dataprocessor.iotoperations.azure.com/v1
+kind: Pipeline
+metadata:
+  name: pipeline-shift-history-totals-load
+  namespace: azure-iot-operations
+spec:
+  enabled: true
+  input:
+    authentication:
+      type: serviceAccountToken
+    broker: tls://aio-mq-dmqtt-frontend:8883
+    cleanSession: false
+    displayName: mq-input-zurich
+    format:
+      type: json
+    next:
+    - transform-input
+    partitionCount: 1
+    partitionStrategy:
+      expression: .payload.payload | keys[0] as $k | if $k | test("Status|Counter") then 
+                                                        ($k | split(".")[1])
+                                                     else .topic end
+      type: key
+    qos: 1
+    topics:
+    - zurich/input/valid
+    type: input/mqtt@v1
+  stages:
+    transform-input:
+      displayName: transform-input
+      expression: '.payload = (.payload.payload | to_entries
+                                  | map(if .key | test("Counter") then 
+                                          {"key": "NodeId", "value": .key},
+                                          {"key": (.key | split(".")[-1]), "value": .value.Value},
+                                          {"key": "SourceTimestamp", "value": .value.SourceTimestamp},
+                                          {"key": "MachineId", "value": (.key | split(".")[1])}
+                                        else . 
+                                        end) 
+                                  | from_entries)'
+      next:
+      - filter-leave-counter-tag
+      type: processor/transform@v1
+    filter-leave-counter-tag:
+      displayName: filter-leave-counter-tag
+      expression: (.payload.NodeId != null) and (.payload.NodeId | test("Counter"))
+      next:
+      - lkv-goodcounter-badcounter
+      type: processor/filter@v1
+    lkv-goodcounter-badcounter:
+      displayName: lkv-goodcounter-badcounter
+      next:
+      - filter-leave-only-shifts-beginning
+      properties:
+      - inputPath: .payload.GoodCounter
+        outputPath: .payload.lkvGoodCounter
+      - inputPath: .payload.BadCounter
+        outputPath: .payload.lkvBadCounter
+      type: processor/lkv@v1
+    filter-leave-only-shifts-beginning:
+      displayName: filter-leave-only-shifts-beginning
+      expression: ((.payload.GoodCounter != null) and (.payload.GoodCounter < .payload.lkvGoodCounter)) or ((.payload.BadCounter != null) and (.payload.BadCounter < .payload.lkvBadCounter))
+      next:
+      - transform-add-shift-total
+      type: processor/filter@v1
+    transform-add-shift-total:
+      displayName: transform-add-shift-total
+      expression: '.payload |= (if .GoodCounter then 
+                                  . + {"ShiftTotal": .lkvGoodCounter}
+                                else                 
+                                  if .BadCounter then 
+                                    . + {"ShiftTotal": .lkvBadCounter}
+                                  else .
+                                  end
+                              end)'
+      next:
+      - enrich-with-previous-shifts
+      type: processor/transform@v1
+    enrich-with-previous-shifts:
+      alwaysArray: false
+      conditions:
+      - inputPath: .payload.MachineId
+        key: machineId
+        type: keyMatch
+      dataset: dataset-shift-history-totals
+      displayName: enrich-with-previous-shifts
+      limit: 100
+      next:
+      - transform-prepare-output
+      outputPath: .payload.shifts
+      type: processor/enrich@v1
+    transform-prepare-output:
+      displayName: transform-prepare-output
+      expression: |-
+        .payload = {
+            MachineId: .payload.MachineId,
+            ShiftTotal: (if (.payload.shifts.ShiftTotal) then 
+                          (.payload.shifts.ShiftTotal + .payload.ShiftTotal)
+                         else (.payload.ShiftTotal)
+                         end),
+            LastMessageTime: .payload.SourceTimestamp
+        }
+      next:
+      - output
+      type: processor/transform@v1
+    output:
+      dataset: dataset-shift-history-totals
+      displayName: refdataset-output-shift-history-totals
+      type: output/refdata@v1

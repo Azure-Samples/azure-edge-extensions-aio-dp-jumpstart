@@ -1,0 +1,95 @@
+apiVersion: dataprocessor.iotoperations.azure.com/v1
+kind: Pipeline
+metadata:
+  name: pipeline-total-counter
+  namespace: azure-iot-operations
+spec:
+  enabled: true
+  input:
+    authentication:
+      type: serviceAccountToken
+    broker: tls://aio-mq-dmqtt-frontend:8883
+    cleanSession: false
+    displayName: mq-input-current-shift-total
+    format:
+      type: json
+    next:
+    - enrich-with-previous-shifts
+    partitionCount: 1
+    partitionStrategy:
+      expression: .topic
+      type: key
+    qos: 1
+    topics:
+    - zurich/current-shift-total
+    type: input/mqtt@v1
+  stages:
+    enrich-with-previous-shifts:
+      alwaysArray: false
+      conditions:
+      - inputPath: .payload.MachineId
+        key: machineId
+        type: keyMatch
+      dataset: dataset-shift-history-totals
+      displayName: enrich-with-previous-shifts
+      limit: 100
+      next:
+      - add-prev-shifts-to-current
+      outputPath: .payload.shifts
+      type: processor/enrich@v1
+    add-prev-shifts-to-current:
+      displayName: add-prev-shifts-to-current
+      expression: |
+        .payload = {
+          NodeId: .payload.NodeId,
+          TotalCounter: (
+            .payload.CurrentShiftCounter + (if (.payload.shifts.ShiftTotal) then
+                                              (.payload.shifts.ShiftTotal)
+                                            else 0 
+                                            end)
+          )
+        }
+      next:
+      - enrich-with-metadata
+      type: processor/transform@v1
+    enrich-with-metadata:
+      alwaysArray: false
+      conditions:
+      - inputPath: .payload.NodeId
+        key: nodeId
+        type: keyMatch
+      dataset: dataset-reference-data
+      displayName: enrich-with-metadata
+      limit: 1000
+      next:
+      - clean-output
+      outputPath: .enrich
+      type: processor/enrich@v1
+    clean-output:
+      displayName: clean-output
+      expression: '.payload = (.payload as $payload 
+        | .enrich as $enriched 
+        | {
+            PlantId: $enriched.PlantId,
+            LineId: $enriched.LineId,
+            MachineId: $enriched.MachineId,
+            VariableId: "TOTAL_COUNT",
+            Value: $payload.TotalCounter
+          })'
+      next:
+      - output
+      type: processor/transform@v1
+    output:
+      authentication:
+        type: serviceAccountToken
+      broker: tls://aio-mq-dmqtt-frontend:8883
+      displayName: mq-output-zurich-total-count
+      format:
+        path: .payload
+        type: json
+      qos: 1
+      topic:
+        type: static
+        value: metrics/aio/total-count
+      type: output/mqtt@v1
+      userProperties: []

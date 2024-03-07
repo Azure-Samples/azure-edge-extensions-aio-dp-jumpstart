@@ -1,0 +1,12 @@
+{
+    "timestamp": "2023-12-18T07:08:51.9706158Z",
+    "messageType": "ua-deltaframe",
+    "payload": {
+        "ns=2;s=AreaName.MachineName.Counter.GoodCounter": {
+            "OtherPropertyButNottimestamp": "",
+            "Value": 223
+        }
+    },
+    "dataSetWriterName": "SomeName",
+    "sequenceNumber": 8003
+}

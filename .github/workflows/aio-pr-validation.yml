@@ -1,0 +1,104 @@
+name: AIO - Validate Pull Request
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: [main, dev]
+    paths:
+      - '.github/workflows/**'
+      - 'infra/**'
+      - '!infra/**/*.md' # Exclude markdown files in the /infra/ directory
+
+  workflow_dispatch:
+
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ValidateDevAioTemplate:
+    runs-on: ubuntu-latest
+    env:
+      PIPELINE_DATASET_TIMEOUT: 300 # 5 minutes
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v3
+    
+    - name: Install mosquitto clients
+      run: sudo apt-get install -y mosquitto-clients
+
+    - name: Install inotify
+      run: sudo apt-get install -y inotify-tools
+
+    - name: "Install K3D"
+      env:
+        K3D_VERSION: v5.6.0
+        K3D_URL: "https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh"
+      run: |-
+        curl --silent --fail ${K3D_URL} | TAG=${K3D_VERSION} bash
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create K3D cluster
+      run: ./infra/provisioning/00-clean-up.sh --skip-rg
+
+    - name: Set up necessary env variables for use later
+      env:
+        AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+        CUSTOM_LOCATION_OBJECT_ID: ${{ secrets.CUSTOM_LOCATION_OBJECT_ID }}
+      run: |
+        echo "RESOURCE_GROUP=aio-pr-validation-${{ github.run_number }}" >> $GITHUB_ENV
+        echo "CLUSTER_NAME=workflow-cluster" >> $GITHUB_ENV
+        echo "LOCATION=westus2" >> $GITHUB_ENV
+
+        spClientId=$(echo "${AZURE_CREDENTIALS}" | jq -r '.clientId')
+        spClientSecret=$(echo "${AZURE_CREDENTIALS}" | jq -r '.clientSecret')
+        spObjectId=$(az ad sp show --id $spClientId --query id -o tsv)
+
+        echo "AKV_SP_CLIENT_ID=$spClientId" >> $GITHUB_ENV
+        echo "AKV_SP_CLIENT_SECRET=$spClientSecret" >> $GITHUB_ENV
+        echo "AKV_SP_OBJECT_ID=$spObjectId" >> $GITHUB_ENV
+        echo "ARC_CUSTOMLOCATION_OID=${CUSTOM_LOCATION_OBJECT_ID}" >> $GITHUB_ENV
+
+    - name: Connect Cluster to ARC
+      run: |-
+        ./infra/provisioning/01-arc-connect.sh
+
+    - name: Deploy AIO Template
+      working-directory: ./infra/provisioning
+      run: |-
+        ./03-aio-deploy-core.sh && ./04-aio-deploy-bicep.sh && ./05-aio-deploy-manifests.sh
+    
+    - name: Validate Extensions Deployed
+      working-directory: ./infra/provisioning
+      run: |-
+        ./07-validate-extensions.sh ${CLUSTER_NAME} ${RESOURCE_GROUP}
+
+    - name: Deploy dp dataset and pipelines
+      working-directory: ./infra/deployment
+      run: |-
+        ./01-aio-deploy-dp-pipelines.sh --timeout ${PIPELINE_DATASET_TIMEOUT}
+
+    - name: Running integration tests
+      working-directory: ./test/integration
+      run: |-
+        ./run-zurich-validation.sh
+
+    - name: Clean Up Resource Groups
+      if: always()
+      run: |-
+        if [[ -z "${RESOURCE_GROUP}" ]]; then
+            echo "No resource group set"
+        elif az group exists --name ${RESOURCE_GROUP}; then
+            # If the resource group exists, delete it
+            echo "Deleting ${RESOURCE_GROUP}"
+            az group delete --name ${RESOURCE_GROUP} --yes --no-wait
+        else
+            echo "No resource group to delete"
+        fi
