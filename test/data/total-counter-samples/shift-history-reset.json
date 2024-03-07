@@ -1,0 +1,17 @@
+[
+    {
+        "LastMessageTime": "2023-12-18T07:08:52.0515453Z",
+        "MachineId": "MachineName",
+        "ShiftTotal": 0
+    },
+    {
+        "LastMessageTime": "2023-12-18T07:08:52.0515453Z",
+        "MachineId": "Machine1",
+        "ShiftTotal": 0
+    },
+    {
+        "LastMessageTime": "2023-12-18T07:08:52.0515453Z",
+        "MachineId": "Machine2",
+        "ShiftTotal": 0
+    }
+]

@@ -1,0 +1,16 @@
+{
+    "timestamp": "2023-12-18T07:08:51.9706158Z",
+    "messageType": "ua-deltaframe",
+    "payload": {
+        "ns=2;s=AreaName.MachineName.Status.Idle": {
+            "SourceTimestamp": "2023-12-18T07:08:51.5575029Z",
+            "Value": true
+        },
+        "ns=2;s=AreaName.MachineName.Counter.GoodCounter": {
+            "SourceTimestamp": "2023-12-18T07:08:52.0515453Z",
+            "Value": 223
+        }
+    },
+    "dataSetWriterName": "SomeName",
+    "sequenceNumber": 9001
+}

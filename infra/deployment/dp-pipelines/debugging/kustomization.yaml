@@ -1,0 +1,5 @@
+resources:
+- pipeline-refdata-list.yaml
+- pipeline-shift-history-list.yaml
+- pipeline-zurich-validation-debug.yaml
+- pipeline-shift-history-totals-load-manual.yaml

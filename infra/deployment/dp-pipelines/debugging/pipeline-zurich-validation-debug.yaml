@@ -1,0 +1,71 @@
+apiVersion: dataprocessor.iotoperations.azure.com/v1
+kind: Pipeline
+metadata:
+  name: pipeline-zurich-validation-debug
+  namespace: azure-iot-operations
+spec:
+  enabled: true
+  input:
+    authentication:
+      type: serviceAccountToken
+    broker: tls://aio-mq-dmqtt-frontend:8883
+    cleanSession: false
+    displayName: mq-input-validation
+    format:
+      type: json
+    next:
+    - stage-validation
+    partitionCount: 1
+    partitionStrategy:
+      expression: .topic
+      type: key
+    qos: 1
+    topics:
+    - zurich/input/invalid
+    type: input/mqtt@v1
+  stages:
+    stage-validation:
+      displayName: stage-validation
+      expression: '. + {
+          "_validation": {
+            "sequenceNumber": (.payload.sequenceNumber | type == "number"),
+            "dataSetWriterName": (.payload.dataSetWriterName | type == "string"),
+            "timestamp": (.payload.timestamp | type == "string"),
+            "payload": (.payload.payload | type == "object" and
+              all(.[]; 
+                type == "object" and 
+                has("SourceTimestamp") and (.SourceTimestamp | type == "string") and 
+                has("Value")
+              )
+            ),
+            "payloadIsNotEmpty": (.payload.payload != null and (.payload.payload | length > 0)),
+            "payloadProperties": (.payload.payload | type == "object" and
+              all(keys[];
+                test("^ns=[0-9]+;s=.*$")
+              )
+            )
+          }
+        }'
+      next:
+      - stage-categorization
+      type: processor/transform@v1
+    stage-categorization:
+      displayName: stage-categorization
+      expression:  '. + { "topic": (if (._validation | all(.[]; .)) then "zurich/valid" else "zurich/invalid" end) }'
+      next:
+      - output
+      type: processor/transform@v1
+    output:
+      authentication:
+        type: serviceAccountToken
+      broker: tls://aio-mq-dmqtt-frontend:8883
+      displayName: mq-output-validation-filtering
+      format:
+        path: .
+        type: json
+      qos: 1
+      topic:
+        type: static
+        value: "zurich/debug"
+      type: output/mqtt@v1
+      userProperties: []

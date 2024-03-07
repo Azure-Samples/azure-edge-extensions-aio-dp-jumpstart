@@ -1,0 +1,8 @@
+{
+    "timestamp": "2023-12-18T07:08:51.9706158Z",
+    "messageType": "ua-deltaframe",
+    "payload": {
+    },
+    "dataSetWriterName": "SomeName",
+    "sequenceNumber": 8001
+}

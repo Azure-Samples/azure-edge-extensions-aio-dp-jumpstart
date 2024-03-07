@@ -1,0 +1,11 @@
+apiVersion: dataprocessor.iotoperations.azure.com/v1
+kind: Dataset
+metadata:
+  name: dataset-shift-history-totals
+  namespace: azure-iot-operations
+spec:
+  keys:
+    machineId:
+      path: .MachineId
+      primaryKey: true
+  ttl: 12h

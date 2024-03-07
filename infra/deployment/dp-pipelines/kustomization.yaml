@@ -1,0 +1,31 @@
+resources:
+  # Below is commented out because datasets are required to be up and running before pipelines are deployed
+  # - ./dataset
+  - ./debugging
+  - ./machine-status
+  - ./metrics
+  - ./refdata-load
+  - ./total-counter
+  - ./validation
+  - ./simulator
+
+# Uncomment above dataset and below patches for using a test dataset 
+
+# patches:
+# - target:
+#     kind: Dataset
+#     name: dataset-reference-data
+#   patch: |-
+#     - op: replace
+#       path: /metadata/name
+#       value: testing
+#     - op: replace
+#       path: /spec/ttl
+#       value: 5m
+# - target:
+#     kind: Pipeline
+#     name: pipeline-total-counter
+#   patch: |-
+#     - op: replace
+#       path: /spec/stages/enrich-with-metadata/dataset
+#       value: testing

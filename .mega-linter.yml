@@ -1,0 +1,31 @@
+# Configuration file for MegaLinter
+# See all available variables at https://megalinter.io/configuration/ and in linters documentation
+APPLY_FIXES: none # all, none, or list of linter keys
+# ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
+ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
+  - JSON_JSONLINT
+  - YAML_YAMLLINT
+  - SPELL_MISSPELL
+  - SPELL_CSPELL
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+  - MARKDOWN_MARKDOWNLINT
+DISABLE:
+  - COPYPASTE # Comment to enable checks of excessive copy-pastes
+  # - SPELL # Uncomment to disable checks of spelling mistakes
+SHOW_ELAPSED_TIME: true
+FILEIO_REPORTER: true
+FORMATTERS_DISABLE_ERRORS: false
+DISABLE_ERRORS_LINTERS:
+  - SPELL_CSPELL # comment if you want MegaLinter to detect errors and  block CI to pass
+  - SPELL_MISSPELL # comment if you want MegaLinter to detect errors and  block CI to pass
+  - COPYPASTE_JSCPD # comment if you want MegaLinter to detect errors and  block CI to pass
+  - YAML_PRETTIER # comment if you want MegaLinter to detect errors and  block CI to pass
+MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE: (\.github|megalinter-reports)
+YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: (\.mega-linter\.yml|mega-linter\.yml|\.github|\.devcontainer|megalinter-reports|infra/deployment/*|docs/research/spike-kustomize/*|docs/research/machine-status-investigation/*)
+JSON_JSONLINT_FILTER_REGEX_EXCLUDE: (\.vscode|\.github|\.devcontainer|megalinter-reports)
+SPELL_CSPELL_FILE_EXTENSIONS: [".md", ".ps1", ".psm1", ".cs", ".ipynb"]
+LOG_LEVEL: WARNING
+EXCLUDED_DIRECTORIES:
+  - megalinter-reports
+  - .github
+  

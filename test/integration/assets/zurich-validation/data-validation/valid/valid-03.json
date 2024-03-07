@@ -1,0 +1,32 @@
+{
+    "timestamp": "2024-10-18T07:08:51.9706158Z",
+    "messageType": "ua-deltaframe",
+    "payload": {
+        "ns=2;s=AreaName.MachineName.Status.Mode1": {
+            "SourceTimestamp": "2023-12-18T07:08:51.5575029Z",
+            "Value": true
+        },
+        "ns=2;s=AreaName.MachineName.Counter.GoodCounter": {
+            "SourceTimestamp": "2023-12-18T07:08:52.0515453Z",
+            "Value": 223
+        },
+        "ns=2;s=AreaName.MachineName.Status.Mode1": {
+            "SourceTimestamp": "2023-12-18T07:08:51.5575029Z",
+            "Value": true
+        },
+        "ns=4;s=AreaName.MachineName.Counter.GoodCounter": {
+            "SourceTimestamp": "2023-12-18T07:08:52.0515453Z",
+            "Value": 223
+        },
+        "ns=5;s=AreaName.MachineName.Status.Mode1": {
+            "SourceTimestamp": "2023-12-18T07:08:51.5575029Z",
+            "Value": true
+        },
+        "ns=2;s=AreaName.MachineName.Name": {
+            "SourceTimestamp": "2023-12-18T07:08:52.0515453Z",
+            "Value": "beermaker"
+        }
+    },
+    "dataSetWriterName": "SomeLongNameWriterForBeer",
+    "sequenceNumber": 9003
+}

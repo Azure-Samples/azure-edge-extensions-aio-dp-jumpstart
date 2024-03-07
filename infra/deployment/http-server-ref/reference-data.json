@@ -1,0 +1,149 @@
+[
+    {
+        "NodeId": "ns=2;s=AreaName.MachineName.Status.Fault",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3458",
+        "GlobalAssetVariableId": "10001"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.MachineName.Status.Idle",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3458",
+        "GlobalAssetVariableId": "10002"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.MachineName.Status.Mode1",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3458",
+        "GlobalAssetVariableId": "10003"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.MachineName.Status.Mode2",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3458",
+        "GlobalAssetVariableId": "10004"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.MachineName.Status.Undefined",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3458",
+        "GlobalAssetVariableId": "10005"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.MachineName.Counter.BadCounter",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3458",
+        "GlobalAssetVariableId": "10007"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.MachineName.Counter.GoodCounter",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3458",
+        "GlobalAssetVariableId": "10008"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine1.Status.Fault",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3459",
+        "GlobalAssetVariableId": "10001"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine1.Status.Idle",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3459",
+        "GlobalAssetVariableId": "10002"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine1.Status.Mode1",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3459",
+        "GlobalAssetVariableId": "10003"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine1.Status.Mode2",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3459",
+        "GlobalAssetVariableId": "10004"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine1.Status.Undefined",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3459",
+        "GlobalAssetVariableId": "10005"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine1.Counter.BadCounter",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3459",
+        "GlobalAssetVariableId": "10007"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine1.Counter.GoodCounter",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3459",
+        "GlobalAssetVariableId": "10008"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine2.Status.Fault",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3460",
+        "GlobalAssetVariableId": "10001"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine2.Status.Idle",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3460",
+        "GlobalAssetVariableId": "10002"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine2.Status.Mode1",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3460",
+        "GlobalAssetVariableId": "10003"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine2.Status.Mode2",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3460",
+        "GlobalAssetVariableId": "10004"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine2.Status.Undefined",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3460",
+        "GlobalAssetVariableId": "10005"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine2.Counter.BadCounter",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3460",
+        "GlobalAssetVariableId": "10007"
+    },
+    {
+        "NodeId": "ns=2;s=AreaName.Machine2.Counter.GoodCounter",
+        "PlantId": "Contoso",
+        "LineId": "Campus-A",
+        "MachineId": "3460",
+        "GlobalAssetVariableId": "10008"
+    }
+]

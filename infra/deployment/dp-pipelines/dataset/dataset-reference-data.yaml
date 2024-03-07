@@ -1,0 +1,11 @@
+apiVersion: dataprocessor.iotoperations.azure.com/v1
+kind: Dataset
+metadata:
+  name: dataset-reference-data
+  namespace: azure-iot-operations
+spec:
+  keys:
+    nodeId:
+      path: .NodeId
+      primaryKey: true
+  ttl: 12h

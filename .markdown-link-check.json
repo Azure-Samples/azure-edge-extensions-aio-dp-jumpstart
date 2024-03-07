@@ -1,0 +1,19 @@
+{
+    "ignorePatterns": [      
+        {"pattern": "^https://github.com/cse-labs/"},
+        {"pattern": "^https://github.com/orgs/cse-labs/"},
+        {"pattern": "^https://aka.ms/"},
+        {"pattern": "^https://github.com/microsoft"},
+        {"pattern": "^https://opensource.microsoft.com"},
+        {"pattern": "^https://microsoft.sharepoint.com"},
+        {"pattern": "^https://www.microsoft.com/en-us/legal/"},
+        {"pattern": "^https://www.microsoft.com/msrc"}
+
+    ],
+    "timeout": "20s",
+    "retryOn429": true,
+    "retryCount": 5,
+    "fallbackRetryDelay": "30s",
+    "aliveStatusCodes": [200, 206, 203]
+  }
+  
