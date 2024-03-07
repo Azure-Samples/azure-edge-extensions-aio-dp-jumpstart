@@ -49,6 +49,6 @@ For instructions to run individual steps from this script, take a look at the [p
 
 ## Viewing metrics on Grafana
 
-The deploy script above also creates an Azure Managed Grafana dashboard. At the end of the deployment, click on the provided Grafana link in the output to view total counter and machine status metrics on the `Total Count and Machine Status` dashboard.
+The deploy script above also creates an Azure Managed Grafana dashboard. At the end of the deployment, click on the provided Grafana link in the output to view total counter and machine status metrics on the `Total Count and Machine Status` dashboard. You can also open the dashboard in a new browser by running this [utils script](./utils/open-dashboard.sh).
 
 ![Total count and Machine Status dashboard](../docs/assets/total-count-machine-status-grafana-dashboard.png)
