@@ -1,0 +1,88 @@
+{
+    "ignorePaths": [
+      "**/node_modules/**",
+      "**/vscode-extension/**",
+      "**/.git/**",
+      "**/.pnpm-lock.json",
+      ".vscode",
+      "megalinter",
+      "package-lock.json",
+      "report",
+      "megalinter-reports"
+    ],
+    "language": "en",
+    "languageSettings": [
+      {
+        "languageId": "powershell",
+        "ignoreRegExpList": [
+          "^(?!#).*"
+        ]
+      },
+      {
+        "languageId": "csharp",
+        "ignoreRegExpList": [
+          "^(?!//).*"
+        ]
+      },
+      {
+        "languageId": "markdown",
+        "ignoreRegExpList": [
+          "^\\s*```[\\s\\S]*?^\\s*```"
+        ]
+      }
+    ],
+    "noConfigSearch": true,
+    "words": [
+      "AIO's",
+      "automatable",
+      "codemirror",
+      "Codespace",
+      "Codespaces",
+      "connectedk",
+      "COUNTERNAME",
+      "countervariables",
+      "CUSTOMLOCATION",
+      "Dapr",
+      "dataprocessor",
+      "deadletter",
+      "devcluster",
+      "devcontainer",
+      "DEVTEST",
+      "GAVARIABLEID",
+      "Inotifywait",
+      "iotoperations",
+      "jqueries",
+      "kernelspec",
+      "kubelet",
+      "Kustomization",
+      "kustomize",
+      "MACHINEID",
+      "machinenames",
+      "mosquitto",
+      "mqttclient",
+      "MQTTUI",
+      "msrc",
+      "mycluster",
+      "NATS",
+      "nbformat",
+      "nodeid",
+      "onboardsupport",
+      "opcua",
+      "OPCUA",
+      "otel",
+      "OTEL",
+      "OTLP",
+      "pkill",
+      "protobuf",
+      "Quickstart",
+      "refdata",
+      "refdatajson",
+      "relocatability",
+      "restrictor",
+      "subfolders",
+      "testpodterminate",
+      "yamls",
+      "zuric"
+    ],
+    "version": "0.2"
+  }

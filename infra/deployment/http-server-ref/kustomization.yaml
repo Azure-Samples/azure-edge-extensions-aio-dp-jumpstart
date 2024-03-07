@@ -1,3 +1,0 @@
-resources:
-  - ref-data-load.yaml
-  - service.yaml

@@ -61,11 +61,11 @@ for SITE_NUMBER in $(seq 1 $SITES); do
                 \"Timestamp\": \"2023-12-18T07:08:51.9706158Z\",
                 \"MessageType\": \"ua-deltaframe\",
                 \"Payload\": {
-                    \"ns=$SITE_NUMBER;s=$MACHINE_NUMBER.Status.Mode1\": {
+                    \"ns=$SITE_NUMBER;s=AreaName.$MACHINE_NUMBER.Status.Mode1\": {
                         \"SourceTimestamp\": \"$TIMESTAMP\",
                         \"Value\": true
                     },
-                    \"ns=$SITE_NUMBER;s=$MACHINE_NUMBER.Counter.GoodCounter\": {
+                    \"ns=$SITE_NUMBER;s=AreaName.$MACHINE_NUMBER.Counter.GoodCounter\": {
                         \"SourceTimestamp\": \"$TIMESTAMP\",
                         \"Value\": $total
                     }

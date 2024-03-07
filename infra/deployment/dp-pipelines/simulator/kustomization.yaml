@@ -1,3 +1,0 @@
-resources:
-- pipeline-preprocess-opcua-payload.yaml
-- pipeline-zurich-simulator-machine-status.yaml

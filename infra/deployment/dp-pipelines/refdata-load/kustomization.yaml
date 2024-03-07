@@ -1,3 +1,0 @@
-resources:
-  - pipeline-http-reference-data-load.yaml
-  - pipeline-reference-data-load.yaml

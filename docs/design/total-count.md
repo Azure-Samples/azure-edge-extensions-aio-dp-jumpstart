@@ -58,7 +58,7 @@ Although, it does need be after LKV stage, so that it gets set before then.
 - One payload contains information from only one machine.
 
 ### Consequences
-- Multiple pipelines can be difficult to manage when considering environment configurations, testing, troubleshooting and deployments.
+- Multiple pipelines requires good management of complexity for environment configurations, testing, troubleshooting and deployments.
 - Reference data can get very large. We can possibly solve this by setting TTL and having a separate pipeline that runs before TTL expires in "off-hours" that adds a record total for the day.
 
 ### Other Considerations

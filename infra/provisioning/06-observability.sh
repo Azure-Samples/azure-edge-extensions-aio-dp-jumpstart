@@ -77,6 +77,8 @@ SAMPLE_DASHBOARD_PATH="@../deployment/dashboards/zurich-total-count-and-machine-
 
 az grafana dashboard import --definition $SAMPLE_DASHBOARD_PATH --name $DASHBOARD_NAME --resource-group $RESOURCE_GROUP
 endpoint=$(az grafana show -n $DASHBOARD_NAME -g $RESOURCE_GROUP --query  properties.endpoint -o tsv)
-dashboard_url=$(az grafana dashboard list -n $DASHBOARD_NAME -g $RESOURCE_GROUP --query  "[?id == \`14\`].url" -o tsv)
+
+DASHBOARD_TITLE="Total Count and Machine Status"
+dashboard_url=$(az grafana dashboard list -n $DASHBOARD_NAME -g $RESOURCE_GROUP --query  "[?title == '${DASHBOARD_TITLE}'].url" -o tsv)
 
 echo "{\"dashboard-url\": \"${endpoint}${dashboard_url}\"}" > ~/.azure/grafana.json
