@@ -16,17 +16,11 @@ Ensure the following prerequisites are met:
 
 > **Note:** If you are using GitHub Codespaces jq, bash, mqttclient and inotifywait would be met.
 
-## 1. Deploy the Validation Pipelines
+## The Validation Pipelines
 
-```bash
-kubectl apply -f infra/deployment/dp-pipelines/validation/pipeline-zurich-validation.yaml
-```
-
-Optionally, deploy the debug pipeline:
-
-```bash
-kubectl apply -f infra/deployment/dp-pipelines/debugging/pipeline-zurich-validation-debug.yaml
-```
+In the solution deployment, two validation pipelines are deployed:
+- [pipeline-zurich-validation.yaml](../../infra/deployment/dp-pipelines/validation/pipeline-zurich-validation.yaml)
+- [pipeline-zurich-validation-debug.yaml](../../infra/deployment/dp-pipelines/debugging/pipeline-zurich-validation-debug.yaml)
 
 ## Add Test Messages
 
@@ -57,6 +51,7 @@ echo 'mosquitto_pub -q 1 -V mqttv5 -d -h localhost -p 1883 -t $1 -m $2 -i test' 
 To execute the zurich validation integration tests, run:
 
 ```bash
+cd test/integration
 ./run-integration-tests.sh
 ```
 

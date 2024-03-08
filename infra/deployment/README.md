@@ -51,7 +51,6 @@ For steps on manually deploying these, you can find instructions [here](../provi
 1. Publish an input message to the `zurich/input/valid` topic to calculate a machine status, open a new terminal and execute the following command.
 
    ```bash
-      cd infra/deployment/
       # publish an input to the zurich/input/valid topic to trigger the machine calculation pipeline
       mosquitto_pub -t "zurich/input/valid" -f "../../test/data/machine-status-samples/Idle-true.json"
    ```
