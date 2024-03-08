@@ -1,6 +1,6 @@
 # Quickstart
 
-This is a guide to help you get up and running with the solution for our investigation of Azure IoT Operations (AIO) Data Processing pipelines.
+This is a guide to help you get up and running with the Azure IoT Operations Data Processor pipelines for industrial related scenario using Machine Status and Total Counter tags enrichment solution.
 
 For more detailed information on the deployment of AIO core components follow this [doc](./provisioning/README.md).
 For more detailed information on the deployment of AIO pipelines follow this [doc](./deployment/README.md).

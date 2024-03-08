@@ -1,6 +1,6 @@
 # Provisioning AIO Cluster with K3D
 
-This guide walks you through the steps to provision an Azure IoT Operations (AIO) cluster using the provided Bicep template. The Bicep template is based on the example available in an internal Azure IoT Operations repository.
+This guide walks you through the steps to provision an Azure IoT Operations (AIO) cluster using the provided Bicep template. The Bicep template is based on the example available in an Azure IoT Operations repository.
 
 ## Azure Resource Dependencies
 
