@@ -55,4 +55,4 @@ The deploy script above also creates an Azure Managed Grafana dashboard. At the 
 
 ## Troubleshooting and debugging
 
-Please see [troubleshooting](../docs/TROUBLESHOOTING.md) and [debugging](./deployment/dp-pipelines/debugging/README.md) documents that can help you to navigate through troubleshooting.
+Please see [troubleshooting](../docs/TROUBLESHOOTING.md) and [debugging](../docs/DEBUGGING.md) documents that can help you to navigate through troubleshooting.
