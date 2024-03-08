@@ -82,7 +82,14 @@
       "subfolders",
       "testpodterminate",
       "yamls",
-      "zuric"
+      "zuric",
+      "akri",
+      "ipynb",
+      "ename",
+      "evalue",
+      "traceback",
+      "Jumpstart",
+      "Contextualizer"
     ],
     "version": "0.2"
   }

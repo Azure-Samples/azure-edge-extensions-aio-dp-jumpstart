@@ -57,7 +57,7 @@ For steps on manually deploying these, you can find instructions [here](../provi
    ```
    
    You should now see the enriched message with the reference data in the `metrics/aio/machine-status` topic. The machine status value should be `Idle` for the current input.
-   To output a different machine status value, you can update the input message accordingly by following the [machine status design](../docs/design/machine-status.md#machine-status-logic).
+   To output a different machine status value, you can update the input message accordingly by following the [machine status design](../../docs/design/machine-status.md#machine-status-logic).
 
    ![Image of MQTTUI with metrics/aio/machine-status topic](../../docs/assets/machine-status-aio.png)
 
@@ -69,7 +69,7 @@ For steps on manually deploying these, you can find instructions [here](../provi
    ```
    
    You should now see the enriched message with the reference data in the `metrics/aio/total-count` topic. The total counter value should be 5 for the current input.
-   To output a different total counter value, you can send more input message accordingly by following the [total counter design](../docs/design/total-count.md#total-count-logic).
+   To output a different total counter value, you can send more input message accordingly by following the [total counter design](../../docs/design/total-count.md#total-count-logic).
 
    ![Image of MQTTUI with metrics/aio/total-count topic](../../docs/assets/total-count-aio.png)
 

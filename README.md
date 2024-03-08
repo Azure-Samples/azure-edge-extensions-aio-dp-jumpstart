@@ -12,6 +12,7 @@ This project framework provides the following features:
 
 - AIO Data pipelines to calculate Machine Status and Total Count metrics
 - Observability stack that collects metrics and send then ton an OpenTelemetry Collector.
+- Validation pipeline that runs e2e tests
 
 You can find detailed architecture overview in [system architecture document](docs/design/system-architecture.md).
 

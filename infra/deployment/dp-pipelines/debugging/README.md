@@ -1,6 +1,6 @@
 # Debugging pipelines
 
-This folder contains pipelines that can help in debugging AIO Data Processing pipelines and datasets. Please note that these pipelines are being deployed with the core solutions and are ready to be used. After addiing a new pipeline add it to [kustomization file](./kustomization.yaml) before the deployment for it to be included.
+This folder contains pipelines that can help in debugging AIO Data Processing pipelines and datasets. Please note that these pipelines are being deployed with the core solutions and are ready to be used. After adding a new pipeline add it to [kustomization file](./kustomization.yaml) before the deployment for it to be included.
 
 ## List data in datasets
 
@@ -60,7 +60,7 @@ To create a pipeline to list a data from a new dataset follow the next steps:
 ## Update records in datasets
 
 To be able to update records in `dataset-shift-history-totals` dataset supporting pipeline `pipeline-shift-history-totals-load-manual` was developed. 
-Using this pipeline might be helpful to be able to test total counter functionality from the scretch, as this pipeline would reset sum for previous shifts per machine. The pipeline uses [shift-history-reset file](../../../../test/data/total-counter-samples/shift-history-reset.json) to describe sum for which machine id will be reset.
+Using this pipeline might be helpful to be able to test total counter functionality from scratch, as this pipeline would reset sum for previous shifts per machine. The pipeline uses [shift-history-reset file](../../../../test/data/total-counter-samples/shift-history-reset.json) to describe sum for which machine id will be reset.
 
 ### dataset-shift-history-totals pipeline usage
 

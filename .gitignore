@@ -409,3 +409,8 @@ infra/provisioning/aio-test-private.key
 
 # Auto generated reference data
 .new-reference-data.json
+
+CHANGELOG.md
+LICENSE.md
+LICENSE
+CONTRIBUTING.md
