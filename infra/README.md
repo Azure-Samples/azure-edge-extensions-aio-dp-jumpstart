@@ -15,6 +15,8 @@ For more detailed information on the deployment of AIO Data Processor pipelines 
 
 > **Note**: If required, reset your environment using the [00-clean-up.sh](./provisioning/00-clean-up.sh) script, which will delete the k3d cluster and then recreate the cluster with the right image and settings.
 
+### [OPTIONAL] Individual Steps
+
 For instructions to run individual steps from this script, take a look at the [provisioning](./provisioning/README.md) and [data processor pipeline deployment](./deployment/README.md) documentation.
 
 ## Publishing Input Messages
