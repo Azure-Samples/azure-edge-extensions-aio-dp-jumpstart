@@ -1,20 +1,20 @@
-# Azure IoT Operations Data Processor jumpstart
+# Azure IoT Operations Data Processor Jumpstart
 
-This repository provides a comprehensive sample implementation of Azure IoT Operations Data Processor pipelines for industrial related scenario using Machine Status and Total Counter tags enrichment.
+This repository provides a comprehensive sample implementation of Azure IoT Operations Data Processor pipelines for industrial related scenarios using Machine Status and Total Counter tag enrichments.
 
 The Azure IoT Operations Data Processor is a component of Azure IoT Operations (AIO) designed to handle the complexity and diversity of industrial data. It achieves this by offering data pipelines that enable you to aggregate, enrich, normalize, and filter data from your devices.
 
-When navigating this repository, you will find a rich sort of pipeline yaml and scripts to enrich and transform a simulated industrial payload.
+When navigating this repository, you will find a rich assortment of pipeline yaml and scripts to enrich and transform a simulated industrial payload.
 
 ## Features
 
 This project framework provides the following features:
 
 - AIO Data pipelines to calculate Machine Status and Total Count metrics
-- Observability stack that collects metrics and send then ton an OpenTelemetry Collector.
+- Observability stack that collects metrics and sends them to an OpenTelemetry Collector.
 - Validation pipeline that runs e2e tests
 
-You can find detailed architecture overview in [system architecture document](docs/design/system-architecture.md).
+You can find a detailed architecture overview in [system architecture document](docs/design/system-architecture.md).
 
 ## Getting Started
 

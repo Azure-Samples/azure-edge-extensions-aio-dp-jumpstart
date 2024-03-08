@@ -1,31 +1,31 @@
 # Quickstart
 
-This is a guide to help you get up and running with the Azure IoT Operations Data Processor pipelines for industrial related scenario using Machine Status and Total Counter tags enrichment solution.
+This is a guide to help you get up and running with the solution for the Azure IoT Operations (AIO) Data Processor pipelines.
 
 For more detailed information on the deployment of AIO core components follow this [doc](./provisioning/README.md).
-For more detailed information on the deployment of AIO pipelines follow this [doc](./deployment/README.md).
+For more detailed information on the deployment of AIO Data Processor pipelines follow this [doc](./deployment/README.md).
 
 ## Usage
 
-1. Run deploy script from `infra` directory
+1. Run the deploy script from `infra` directory.
 
 ```bash
-    ./deploy.sh
+   ./deploy.sh
 ```
 
->**Note**: If required, reset your environment using the [00-clean-up.sh](./provisioning/00-clean-up.sh) script, which will delete the k3d cluster and then recreate the cluster with the right image and settings.
+> **Note**: If required, reset your environment using the [00-clean-up.sh](./provisioning/00-clean-up.sh) script, which will delete the k3d cluster and then recreate the cluster with the right image and settings.
 
 For instructions to run individual steps from this script, take a look at the [provisioning](./provisioning/README.md) and [data processor pipeline deployment](./deployment/README.md) documentation.
 
 ## Publishing Input Messages
 
-1. Open MQTTUI to watch the data flow through the pipelines:
+1. Open MQTTUI to watch the data flow through the pipelines.
 
    ```bash
       mqttui
    ```
 
-1. Publish an input message to the `zurich/input` topic to calculate a machine status, open a new terminal and execute the following command.
+1. Publish an input message to the `zurich/input` topic to calculate a machine status in a new terminal and execute the following command.
 
    ```bash
       # publish an input to the zurich/input topic to trigger the machine calculation pipeline
@@ -42,7 +42,7 @@ For instructions to run individual steps from this script, take a look at the [p
       mosquitto_pub -t "zurich/input" -f "../test/data/total-counter-samples/Good-Counter-5.json"
    ```
 
-   You should now see the input message enriched with calculation value for total counter and the reference data in the `metrics/aio/total-count` topic. The total counter value should be 5 for the current input.
+   You should now see the input message enriched with a calculation value for total counter and reference data in the `metrics/aio/total-count` topic. The total counter value should be `5` for the current input.
    To output a different total counter value, you can send more input message accordingly by following the [total counter design](../docs/design/total-count.md#total-count-logic).
 
    ![Image of MQTTUI with metrics](../docs/assets/all-metrics.png)
