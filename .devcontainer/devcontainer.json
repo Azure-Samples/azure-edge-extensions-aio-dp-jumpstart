@@ -37,7 +37,8 @@
 				"inercia.vscode-k3d",
 				"ms-azuretools.vscode-dapr",
 				"davidanson.vscode-markdownlint",
-				"bierner.markdown-mermaid"
+				"bierner.markdown-mermaid",
+				"ms-toolsai.jupyter"
 			]
 		}
 	},
