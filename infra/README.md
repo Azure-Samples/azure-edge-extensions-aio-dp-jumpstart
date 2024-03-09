@@ -19,6 +19,10 @@ For more detailed information on the deployment of AIO Data Processor pipelines 
 
 For instructions to run individual steps from this script, take a look at the [provisioning](./provisioning/README.md) and [data processor pipeline deployment](./deployment/README.md) documentation.
 
+### [OPTIONAL] Jupyter Notebooks
+
+You can also walk through and explore using the Jupyter Notebooks created for this solution. To get started, take a look at the [provisioning notebook](./provisioning/PROVISIONING.ipynb) and [data processor pipeline deployment notebook](./deployment/DEPLOYMENT.ipynb).
+
 ## Publishing Input Messages
 
 1. Open MQTTUI to watch the data flow through the pipelines.
