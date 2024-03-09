@@ -1,7 +1,7 @@
 #!/bin/bash
 total=15
 count=0
-machine_status=3
+machine_status='MODE2'
 limit=5
 context=$1
 metrics_topic=$2
@@ -9,9 +9,9 @@ metrics_topic=$2
 IFS='/' read -r plant_id line_id machine_id <<< "$context"
 
 while true; do
-    if [ "$machine_status" -eq 0 ]; then
+    if [ "$machine_status" = 'FAULT' ]; then
         increment_total=0
-    elif [ "$machine_status" -eq 3 ]; then
+    elif [ "$machine_status" = 'MODE2' ]; then
         increment_total=0
     else
         increment_total=$(shuf -i 1-5 -n 1)
@@ -30,19 +30,19 @@ while true; do
         
         # Determine machine status based on probabilities
         if [ "$random_num" -lt "40" ]; then
-            machine_status=1
+            machine_status='IDLE'
         elif [ "$random_num" -lt "70" ]; then
-            machine_status=2
+            machine_status='MODE1'
         elif [ "$random_num" -lt "80" ]; then
-            machine_status=0
+            machine_status='FAULT'
         elif [ "$random_num" -lt "95" ]; then
-            machine_status=3
+            machine_status='MODE2'
         else
-            machine_status=99
+            machine_status='UNDEFINED'
         fi
     fi
     
     ./data-feeder/_pub.sh "metrics/aio/total-count" "{ \"PlantId\": \"$plant_id\", \"MachineId\": \"$machine_id\", \"LineId\": \"$line_id\", \"VariableId\": \"TOTAL_COUNT\", \"Value\": $total }";
     sleep 1
-    ./data-feeder/_pub.sh "metrics/aio/machine-status" "{ \"PlantId\": \"$plant_id\", \"MachineId\": \"$machine_id\", \"LineId\": \"$line_id\", \"VariableId\": \"MACHINE_STATUS\", \"Value\": $machine_status }";
+    ./data-feeder/_pub.sh "metrics/aio/machine-status" "{ \"PlantId\": \"$plant_id\", \"MachineId\": \"$machine_id\", \"LineId\": \"$line_id\", \"VariableId\": \"MACHINE_STATUS\", \"Value\": \"$machine_status\" }";
 done
