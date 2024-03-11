@@ -10,7 +10,7 @@ The observability stack in Azure IoT Operations leverages Azure Monitor, Grafana
 
 ## Getting Started
 
-The observability stack is part of the instructions on the [provisioning scripts](../infra/provisioning/). Follow the [instructions to provision](../infra/provisioning/README.md) the necessary resources.
+The observability stack is part of the instructions on the [provisioning scripts](../infra/provisioning/). Follow the [instructions to provision](../infra/provisioning/PROVISIONING.ipynb) the necessary resources.
 
 > Important. The available traces and metrics will depend on the number of AIO components enabled, and the type of insights enabled to be scraped by the Prometheus connector. For example if any of the metrics mentioned here, or dashboards does not show data one of the reasons could be that there is not a fully AIO stack deployed, or that Cluster Insights is not enabled. 
 > Using the solution available in this repo is not a fully deployed AIO stack and will therefore not have any metrics available in Prometheus.
@@ -82,6 +82,6 @@ For this to work, it must be a clean environment and we must ensure that all ite
 
 ### Using Grafana dashboards for custom metrics
 
-This repository contains examples of how to use Grafana, OTEL Collector and Prometheus to report custom metrics, see [Metrics pipeline](../infra/deployment/README.md#metrics-pipeline) for more information.
+This repository contains examples of how to use Grafana, OTEL Collector and Prometheus to report custom metrics, see [Metrics pipeline](../infra/deployment/PROVISIONING.ipynb#metrics-pipeline) for more information.
 
 The metrics reported will appear as regular metrics in the existing Grafana Prometheus data source. We have included some examples of [dashboards to be imported](../infra/deployment/dashboards/zurich-total-count-and-machine-status.json).
