@@ -2,8 +2,8 @@
 
 This is a guide to help you get up and running with the solution for the Azure IoT Operations (AIO) Data Processor pipelines.
 
-For more detailed information on the deployment of AIO core components follow this [doc](./provisioning/README.md).
-For more detailed information on the deployment of AIO Data Processor pipelines follow this [doc](./deployment/README.md).
+For more detailed information on the deployment of AIO core components follow this [doc](./provisioning/PROVISIONING.ipynb).
+For more detailed information on the deployment of AIO Data Processor pipelines follow this [doc](./deployment/DEPLOYMENT.ipynb).
 
 ## Usage
 
