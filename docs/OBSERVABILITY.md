@@ -82,6 +82,6 @@ For this to work, it must be a clean environment and we must ensure that all ite
 
 ### Using Grafana dashboards for custom metrics
 
-This repository contains examples of how to use Grafana, OTEL Collector and Prometheus to report custom metrics, see [Metrics pipeline](../infra/deployment/PROVISIONING.ipynb#metrics-pipeline) for more information.
+This repository contains examples of how to use Grafana, OTEL Collector and Prometheus to report custom metrics, see [Metrics pipeline](../infra/deployment/PROVISIONING.ipynb) for more information.
 
 The metrics reported will appear as regular metrics in the existing Grafana Prometheus data source. We have included some examples of [dashboards to be imported](../infra/deployment/dashboards/zurich-total-count-and-machine-status.json).
