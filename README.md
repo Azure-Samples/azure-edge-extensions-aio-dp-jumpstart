@@ -28,8 +28,6 @@ You can find a detailed architecture overview in [system architecture document](
 
 In order to explore the solution, follow the instructions available in the [Quickstart README.md](./infra/README.md). This will setup the infrastructure with an Arc-enabled K3d cluster and Azure IoT Operations components that support AIO Data Processor pipelines and deploy the AIO Data Processor pipelines.
 
-## Demo
-
 ## Resources
 - [Azure IoT Operations Preview](https://learn.microsoft.com/en-us/azure/iot-operations/)
 - [Azure IoT Data Processor](https://learn.microsoft.com/en-us/azure/iot-operations/process-data/overview-data-processor#what-is-azure-iot-data-processor)
