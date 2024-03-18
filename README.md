@@ -28,9 +28,6 @@ You can find a detailed architecture overview in [system architecture document](
 
 In order to explore the solution, follow the instructions available in the [Quickstart README.md](./infra/README.md). This will setup the infrastructure with an Arc-enabled K3d cluster and Azure IoT Operations components that support AIO Data Processor pipelines and deploy the AIO Data Processor pipelines.
 
-## Demo
-
-A short demo of the AIO DP Jumpstart can be viewed [here](https://microsoft-my.sharepoint.com/:v:/p/ehoops/Ec0WVYX2XYtJmG-V_5uE1GEB02c-jn1gi4QT1Bmx_s9Rjw?e=ZknFFr&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 ## Resources
 - [Azure IoT Operations Preview](https://learn.microsoft.com/en-us/azure/iot-operations/)
 - [Azure IoT Data Processor](https://learn.microsoft.com/en-us/azure/iot-operations/process-data/overview-data-processor#what-is-azure-iot-data-processor)
