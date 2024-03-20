@@ -31,7 +31,7 @@ In order to explore the solution, follow the instructions available in the [Quic
 ## Demo
 
 The following video demonstrates the Azure IoT Operations Data Processor Jumpstart in action:
-[![Azure IoT Operations Data Processor Jumpstart](/docs/assets/intro-thumbnail.png)](https://microsoft-my.sharepoint.com/:v:/p/ehoops/Ec0WVYX2XYtJmG-V_5uE1GEB02c-jn1gi4QT1Bmx_s9Rjw?e=dnnRFp)
+[![Azure IoT Operations Data Processor Jumpstart](./docs/assets/intro-thumbnail.png)](https://microsoft-my.sharepoint.com/:v:/p/ehoops/Ec0WVYX2XYtJmG-V_5uE1GEB02c-jn1gi4QT1Bmx_s9Rjw?e=dnnRFp)
 
 ## Resources
 - [Azure IoT Operations Preview](https://learn.microsoft.com/en-us/azure/iot-operations/)
