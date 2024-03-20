@@ -170,13 +170,13 @@ var CONTAINER_REGISTRY_DOMAINS = {
 // format of this object. Updating keys will break the UI.
 var VERSIONS = {
   adr: '0.1.0-preview'
-  opcUaBroker: '0.2.0-preview'
+  opcUaBroker: '0.3.0-preview'
   observability: '0.1.0-preview'
-  akri: '0.1.0-preview'
-  mq: '0.2.0-preview'
-  aio: '0.3.0-preview'
+  akri: '0.2.1-preview'
+  mq: '0.3.0-preview'
+  aio: '0.4.0-preview'
   layeredNetworking: '0.1.0-preview'
-  processor: '0.1.2-preview'
+  processor: '0.2.0-preview'
 }
 
 var TRAINS = {
