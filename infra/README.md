@@ -15,6 +15,16 @@ For more detailed information on the deployment of AIO Data Processor pipelines 
 
 > **Note**: If required, reset your environment using the [00-clean-up.sh](./provisioning/00-clean-up.sh) script, which will delete the k3d cluster and then recreate the cluster with the right image and settings.
 
+### [OPTIONAL] Industrial Simulator Sample
+
+There is also a simulator that can be used to simulate the input messages for the data processor pipelines. To run the simulator, run the simulator script.
+
+```bash
+   ./provisioning/08-simulator.sh
+```
+
+You can explore more about this sample application in the here: [Azure-Samples/explore-iot-operations/tree/main/samples/industrial-data-simulator](https://github.com/Azure-Samples/explore-iot-operations/tree/main/samples/industrial-data-simulator)
+
 ### [OPTIONAL] Individual Steps
 
 You can also walk through and explore using the Jupyter Notebooks created for this solution. To get started, take a look at the [provisioning notebook](./provisioning/PROVISIONING.ipynb) and [data processor pipeline deployment notebook](./deployment/DEPLOYMENT.ipynb).
