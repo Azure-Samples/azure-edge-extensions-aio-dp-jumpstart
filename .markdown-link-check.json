@@ -7,7 +7,8 @@
         {"pattern": "^https://opensource.microsoft.com"},
         {"pattern": "^https://microsoft.sharepoint.com"},
         {"pattern": "^https://www.microsoft.com/en-us/legal/"},
-        {"pattern": "^https://www.microsoft.com/msrc"}
+        {"pattern": "^https://www.microsoft.com/msrc"},
+        {"pattern": "^https://microsoft-my.sharepoint.com/:v:/p/ehoops/"}
 
     ],
     "timeout": "20s",
