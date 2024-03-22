@@ -25,8 +25,18 @@ You can find a detailed architecture overview in [system architecture document](
 1. **Azure Subscription**: `az login` has been executed and default subscription has been set. Ensure you have access to an Azure subscription where you can deploy resources.
 
 ### Quickstart
+In order to explore the solution, you can use the GitHub Codespace to quickly setup the environment and deploy the Azure IoT Operations components.
 
-In order to explore the solution, follow the instructions available in the [Quickstart README.md](./infra/README.md). This will setup the infrastructure with an Arc-enabled K3d cluster and Azure IoT Operations components that support AIO Data Processor pipelines and deploy the AIO Data Processor pipelines.
+> [!IMPORTANT]
+> Codespaces are easy to setup quickly and tear down later, but they're not suitable for performance evaluation or scale testing. For those scenarios, use a validated environment from the official documentation.
+>
+> Azure IoT Operations Data Processor is currently in preview and not recommended for production use no matter the environment.
+
+1. Use this GitHub codespace to explore Azure IoT Operations Data Processor in your browser without installing anything on your local machine.
+
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-edge-extensions-aio-dp-jumpstart?quickstart=1)
+
+1. Follow the instructions available in the [Quickstart README.md](./infra/README.md). This will setup the infrastructure with an Arc-enabled K3d cluster and Azure IoT Operations components that support AIO Data Processor pipelines and deploy the AIO Data Processor pipelines.
 
 ## Demo
 
