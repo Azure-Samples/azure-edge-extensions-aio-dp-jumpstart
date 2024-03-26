@@ -30,7 +30,6 @@ spec:
           "_validation": {
             "sequenceNumber": (.payload.sequenceNumber | type == "number"),
             "dataSetWriterName": (.payload.dataSetWriterName | type == "string"),
-            "messageType": (.payload.messageType | type == "string"),
             "timestamp": (.payload.timestamp | type == "string"),
             "payload": (.payload.payload | type == "object" and
               all(.[]; 
