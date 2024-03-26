@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
         - name: data-simulator
-          image: ghcr.io/azure-samples/explore-iot-operations/industrial-data-simulator:latest
+          image: k3d-devregistry.localhost:5500/local-industrial-data-simulator:latest
           imagePullPolicy: Always
           ports:
             - name: prometheus
