@@ -55,7 +55,7 @@ cd test/integration
 ./run-integration-tests.sh
 ```
 
-> **Note:** If you require specific authentication settings for pub/sub see [Failed to Connect to Send and Receive Messages into MQ](#failed-to-connect-to-send-and-receive-messages-into-mq) for guidance.
+> **Note:** If you require specific authentication settings for pub/sub see [Failed to Connect to Send and Receive Messages into MQ](#mqfail) for guidance.
 
 ## Zurich Validation Integration Tests
 
