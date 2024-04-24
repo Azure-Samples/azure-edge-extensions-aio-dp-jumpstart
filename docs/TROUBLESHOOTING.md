@@ -2,7 +2,7 @@
 
 This guide provides solutions for common issues you may encounter.
 
-## Problem 1: Custom Location OID cannot be retrieved
+## <a name="problem-1-custom-location-oid-cannot-be-retrieved"></a> Problem 1: Custom Location OID cannot be retrieved
 
 ### Symptom for Problem 1
 
