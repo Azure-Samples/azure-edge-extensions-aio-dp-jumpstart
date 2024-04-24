@@ -142,7 +142,8 @@
       "vlhc",
       "westus",
       "wsid",
-      "pushd"
+      "pushd",
+      "mqfail"
     ],
     "version": "0.2"
   }
