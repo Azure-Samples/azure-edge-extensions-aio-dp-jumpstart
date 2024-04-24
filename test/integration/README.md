@@ -133,7 +133,7 @@ To add test scenarios for total counter:
 
 ## Troubleshooting
 
-### Failed to Connect to Send and Receive Messages into MQ
+### <a name="mqfail"></a> Failed to Connect to Send and Receive Messages into MQ
 
 If you encounter issues connecting to the AIO MQ broker:
 
@@ -150,7 +150,7 @@ If you encounter issues connecting to the AIO MQ broker:
 
 ### Messages not arriving to the .workspace outputs folder
 
-* Make sure the MQ connection is working. See [Failed to Connect to Send and Receive Messages into MQ](#failed-to-connect-to-send-and-receive-messages-into-mq).
+* Make sure the MQ connection is working. See [Failed to Connect to Send and Receive Messages into MQ](#mqfail).
 * Make sure no other pipelines are running over the same `input` and or `output` topics.
 
 ### Extending the integration test
