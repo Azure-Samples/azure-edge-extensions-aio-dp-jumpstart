@@ -133,7 +133,7 @@ To add test scenarios for total counter:
 
 ## Troubleshooting
 
-### Failed to Connect to Send and Receive Messages into MQ
+### <a name="mqfail"></a> Failed to Connect to Send and Receive Messages into MQ
 
 If you encounter issues connecting to the AIO MQ broker:
 

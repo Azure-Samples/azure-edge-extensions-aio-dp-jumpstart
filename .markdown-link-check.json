@@ -8,7 +8,9 @@
         {"pattern": "^https://microsoft.sharepoint.com"},
         {"pattern": "^https://www.microsoft.com/en-us/legal/"},
         {"pattern": "^https://www.microsoft.com/msrc"},
-        {"pattern": "^https://microsoft-my.sharepoint.com/:v:/p/ehoops/"}
+        {"pattern": "^https://microsoft-my.sharepoint.com/:v:/p/ehoops/"},
+        {"pattern": "#problem1"},
+        {"pattern": "#mqfail"}
 
     ],
     "timeout": "20s",

@@ -4,7 +4,7 @@ This guide provides solutions for common issues you may encounter.
 
 ## Problem 1: Custom Location OID cannot be retrieved
 
-### Symptom for Problem 1
+### <a name="problem1"></a> Symptom for Problem 1
 
 When running `az connectedk8s enable-features -n $CLUSTER_NAME -g $RESOURCE_GROUP --custom-locations-oid $ARC_CUSTOMLOCATION_OID --features cluster-connect custom-locations`, you may receive the following:
 
@@ -74,7 +74,7 @@ Before creating your K3d cluster, set the environment variable as below:
 ### Symptom for Problem 3
 
 You may get failures in `AIO - Validate Pull Request` Github Actions Workflow during deployment of AIO components.
-Failures in deployments of AIO components may be difficult to troubleshoot if the errors are in the pods deployed like Problem #1. 
+Failures in deployments of AIO components may be difficult to troubleshoot if the errors are in the pods deployed like Problem #1.
 
 ### Cause for Problem 3
 
