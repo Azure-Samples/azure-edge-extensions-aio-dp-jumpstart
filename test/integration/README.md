@@ -55,7 +55,7 @@ cd test/integration
 ./run-integration-tests.sh
 ```
 
-> **Note:** If you require specific authentication settings for pub/sub see [Failed to Connect to Send and Receive Messages into MQ](#mqfail) for guidance.
+> **Note:** If you require specific authentication settings for pub/sub see section `Failed to Connect to Send and Receive Messages into MQ` for guidance.
 
 ## Zurich Validation Integration Tests
 
@@ -150,7 +150,7 @@ If you encounter issues connecting to the AIO MQ broker:
 
 ### Messages not arriving to the .workspace outputs folder
 
-* Make sure the MQ connection is working. See [Failed to Connect to Send and Receive Messages into MQ](#mqfail).
+* Make sure the MQ connection is working.
 * Make sure no other pipelines are running over the same `input` and or `output` topics.
 
 ### Extending the integration test

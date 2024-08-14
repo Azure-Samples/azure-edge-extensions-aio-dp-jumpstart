@@ -74,7 +74,7 @@ Before creating your K3d cluster, set the environment variable as below:
 ### Symptom for Problem 3
 
 You may get failures in `AIO - Validate Pull Request` Github Actions Workflow during deployment of AIO components.
-Failures in deployments of AIO components may be difficult to troubleshoot if the errors are in the pods deployed like [Problem #1](#problem1). 
+Failures in deployments of AIO components may be difficult to troubleshoot if the errors are in the pods deployed like Problem #1.
 
 ### Cause for Problem 3
 
