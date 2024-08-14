@@ -6,6 +6,10 @@ The Azure IoT Operations Data Processor is a component of Azure IoT Operations (
 
 When navigating this repository, you will find a rich assortment of pipeline yaml and scripts to enrich and transform a simulated industrial payload.
 
+> [!WARNING]  
+> This Azure Edge Extensions has confirmed compatiblity with the 0.5.0 preview version of Azure IoT Operations. Please review
+> [AIO release notes](https://github.com/Azure/azure-iot-operations/releases) for current preview version releases.
+
 ## Features
 
 This project framework provides the following features:
