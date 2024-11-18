@@ -14,22 +14,13 @@
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers/features/azure-cli:1": {
-			"extensions": "connectedk8s,k8s-extension,azure-iot-ops"
-		},
 		"ghcr.io/rio/features/k3d:1": {},
 		"ghcr.io/dapr/cli/dapr-cli:0": {},
 		"ghcr.io/devcontainers/features/dotnet:2": {},
-		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-			"helm": "latest"
-		},
-		"ghcr.io/devcontainers/features/powershell:1": {
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers/features/node:1": {
-			"nodeGypDependencies": true,
-			"version": "lts",
-			"nvmVersion": "latest"
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {
+			"extensions": "connectedk8s,k8s-extension,azure-iot-ops,eventgrid,customlocation"
 		}
 		},
 	// Configure tool-specific properties.

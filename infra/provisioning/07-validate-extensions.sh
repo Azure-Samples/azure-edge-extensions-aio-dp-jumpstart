@@ -7,7 +7,7 @@ if [ $# -ne 2 ]; then
 fi
 
 # Define the list of expected extensions
-expected_extensions=("microsoft.iotoperations.mq" "microsoft.iotoperations.dataprocessor" "microsoft.iotoperations" "microsoft.azurekeyvaultsecretsprovider" "microsoft.dapr")
+expected_extensions=("microsoft.iotoperations" "microsoft.iotoperations.platform" "microsoft.azure.secretstore" "microsoft.arc.containerstorage")
 
 # Get the list of installed extensions
 installed_extensions=$(az k8s-extension list --cluster-type connectedClusters --cluster-name $1 --resource-group $2 --query "[].extensionType" -o tsv)

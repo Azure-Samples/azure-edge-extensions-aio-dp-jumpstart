@@ -22,7 +22,13 @@ subscriptionId=$(az account show --query id --output tsv)
 
 # Create a service principal with the owner role
 echo "Creating Service Principal ..."
-spAuthInfo=$(az ad sp create-for-rbac --name $appName --role owner --scopes /subscriptions/$subscriptionId --json-auth)
+spAuthInfo=$(az ad sp create-for-rbac --name $appName --role contributor --scopes /subscriptions/$subscriptionId --json-auth)
+
+# Check if spAuthInfo is successful and not empty
+if [ $? -ne 0 ] || [ -z "$spAuthInfo" ]; then
+    echo "Error: Failed to create the service principal or the output is empty."
+    exit 1
+fi
 
 # Display the results
 echo $spAuthInfo | jq  '{clientId, clientSecret, subscriptionId, tenantId}' > ~/.azure/servicePrincipal.json
