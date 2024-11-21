@@ -48,7 +48,7 @@ ContainerLog
 | where Type == 'ContainerLog'
 | where SourceSystem == 'Containers'
 | where LogEntrySource == 'stdout'
-| where LogEntry startswith('{"trace_id"')
+| where LogEntry startswith('"trace_id"')
 | where LogEntry contains ('"code.function":"FinalError"')
 | where LogEntry contains ('"pipeline.id":"machine-status-from-input"')
 ```
@@ -61,7 +61,7 @@ This could be the base for alerts or monitoring systems.
 
 After setting up observability, an Azure Managed Grafana resource will appear in your cluster resource group. This instance is already configured to receive information from two data sources: prometheus (metrics), and Azure Monitor (traces). Use the explore option in each of the data source to see what information is landing.
 
-You could also import existing dashboards [from the samples provided by the product group](https://github.com/Azure/azure-iot-operations/tree/main/samples/grafana-dashboards). There are two versions of each dashboard, both are very similar, use the aio_dp_* ones to monitor data processing.
+You could also import existing dashboards [from the samples provided by the product group](https://github.com/Azure/azure-iot-operations/tree/main/samples/grafana-dashboard). There are two versions of each dashboard, both are very similar, use the aio_dp_* ones to monitor data processing.
 
 ### Using Grafana dashboards to monitor data ingestion
 
