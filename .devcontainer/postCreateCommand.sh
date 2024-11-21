@@ -23,12 +23,34 @@ if [[ $(k3d cluster list | grep devcluster) ]]; then
     echo "Cluster already exists so this is a rebuild of Dev Container, resetting context"
     k3d kubeconfig merge devcluster --kubeconfig-merge-default
 else
-    k3d cluster create devcluster --registry-use k3d-devregistry.localhost:5500 -i ghcr.io/jlian/k3d-nfs:v1.25.3-k3s1 \
+    k3d cluster create devcluster\
     -p '1883:1883@loadbalancer' \
-    -p '8883:8883@loadbalancer' \
-    -p '6001:6001@loadbalancer' \
-    -p '4000:80@loadbalancer'
+    -p '8883:8883@loadbalancer' 
 fi
+
+# List of az cli extensions to check with their versions
+extensions=(
+    "connectedk8s:1.9.3"
+    "k8s-extension:1.6.1"
+    "azure-iot-ops"
+    "eventgrid"
+    "customlocation"
+)
+
+# Loop through the extensions
+for extension in "${extensions[@]}"; do
+    # Extract the extension name and version
+    IFS=':' read -r name version <<< "$extension"
+    
+    # Check if the extension is installed
+    if ! az extension list --output table | grep -q "$name"; then
+        # If not installed, install it with the specified version
+        echo "Installing $name version $version..."
+        az extension add --name "$name" --version "$version" --allow-preview true
+    else
+        echo "$name is already installed."
+    fi
+done
 
 # Run the command 'mega-linter-runner' from the main workspace directory to use the megalinter config files
 # '--fix' option is used to fix the errors automatically
